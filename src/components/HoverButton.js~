@@ -1,0 +1,43 @@
+import React from "react"
+import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from "gatsby"
+import posed from "react-pose";
+
+const BtnWrapper = styled(Link)`
+  height: 40px;
+  width: 40px;
+  text-align: center;
+  display: block;
+  margin: auto;
+  background: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 50%;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+  }
+`
+
+export const HoverButton = ({ children, to, icon }) => {
+
+  const Box = posed.div({
+    hoverable: true,
+    init: {
+      scale: 1,
+      boxShadow: "0px 0px 0px rgba(0,0,0,0)"
+    },
+    hover: {
+      scale: 1.1,
+      boxShadow: "0px 5px 10px rgba(0,0,0,0.3)"
+    }
+  });
+
+  return (
+    <>
+      <BtnWrapper to={to}><Box><i className={"fas" + icon + " fa-2x" ></i></Box></BtnWrapper>
+    </>
+  );
+
+}
